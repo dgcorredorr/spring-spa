@@ -14,11 +14,12 @@ import java.time.LocalDateTime;
 @Builder
 public class SessionInfoDto {
     private Long sessionInfoId;
-    @JsonIgnore
     private Short specialistId;
     private SpecialistDto specialist;
-    @JsonIgnore
     private Long clientId;
     private ClientDto client;
+    private Long appointmentId;
+    @JsonIgnore
+    private AppointmentDto appointment;
     private LocalDateTime sessionDate;
 }

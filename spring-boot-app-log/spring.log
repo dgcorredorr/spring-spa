@@ -732,3 +732,135 @@ org.springframework.data.mapping.PropertyReferenceException: No property 'clienI
 2022-12-03 21:55:08.840  INFO 31220 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
 2022-12-03 21:55:08.862  INFO 31220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/tech_camp/db_crud/api'
 2022-12-03 21:55:08.871  INFO 31220 --- [restartedMain] com.techcamp.spa.SpaApplication          : Started SpaApplication in 3.241 seconds (JVM running for 4.341)
+2022-12-03 23:00:46.877  INFO 37940 --- [restartedMain] com.techcamp.spa.SpaApplication          : Starting SpaApplication using Java 11.0.15.1 on INTELi5-W11 with PID 37940 (C:\Users\dgcor\Documents\TechCamp\Repositorios\spring\build\classes\java\main started by dgcor in C:\Users\dgcor\Documents\TechCamp\Repositorios\spring)
+2022-12-03 23:00:46.879  INFO 37940 --- [restartedMain] com.techcamp.spa.SpaApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-03 23:00:46.929  INFO 37940 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\dgcor\.gradle\caches\modules-2\files-2.1\com.oracle.database.jdbc\ojdbc8\21.5.0.0\eb13f0948ca8675f71d59b5e8a1129d4c6189e7a\ojdbc8-21.5.0.0.jar referenced one or more files that do not exist: file:/C:/Users/dgcor/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc8/21.5.0.0/eb13f0948ca8675f71d59b5e8a1129d4c6189e7a/oraclepki.jar
+2022-12-03 23:00:46.929  INFO 37940 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-03 23:00:46.929  INFO 37940 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-03 23:00:47.532  INFO 37940 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-12-03 23:00:47.533  INFO 37940 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-03 23:00:47.574  INFO 37940 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.techcamp.spa.infrastructure.repository.ClientRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-12-03 23:00:47.576  INFO 37940 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.techcamp.spa.infrastructure.repository.DocumentTypeRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-12-03 23:00:47.579  INFO 37940 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.techcamp.spa.infrastructure.repository.GenderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-12-03 23:00:47.581  INFO 37940 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.techcamp.spa.infrastructure.repository.MembershipRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-12-03 23:00:47.582  INFO 37940 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 0 JDBC repository interfaces.
+2022-12-03 23:00:47.589  INFO 37940 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-12-03 23:00:47.589  INFO 37940 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-03 23:00:47.630  INFO 37940 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 4 JPA repository interfaces.
+2022-12-03 23:00:48.088  INFO 37940 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-12-03 23:00:48.095  INFO 37940 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-03 23:00:48.095  INFO 37940 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-12-03 23:00:48.171  INFO 37940 --- [restartedMain] o.a.c.c.C.[.[.[/tech_camp/db_crud/api]   : Initializing Spring embedded WebApplicationContext
+2022-12-03 23:00:48.171  INFO 37940 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1241 ms
+2022-12-03 23:00:48.305  INFO 37940 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-03 23:00:48.482  INFO 37940 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-03 23:00:48.519  INFO 37940 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-03 23:00:48.554  INFO 37940 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-12-03 23:00:48.666  INFO 37940 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-03 23:00:48.768  INFO 37940 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2022-12-03 23:00:49.265  INFO 37940 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-03 23:00:49.272  INFO 37940 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-03 23:00:49.883  INFO 37940 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-03 23:00:49.906  INFO 37940 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/tech_camp/db_crud/api'
+2022-12-03 23:00:49.915  INFO 37940 --- [restartedMain] com.techcamp.spa.SpaApplication          : Started SpaApplication in 3.345 seconds (JVM running for 6.237)
+2022-12-03 23:00:51.591  INFO 37940 --- [http-nio-8081-exec-2] o.a.c.c.C.[.[.[/tech_camp/db_crud/api]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-03 23:00:51.596  INFO 37940 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-03 23:00:51.597  INFO 37940 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-03 23:00:51.937  WARN 37940 --- [http-nio-8081-exec-2] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "No existe el cliente en la base de datos"]
+2022-12-03 23:34:14.790  WARN 37940 --- [http-nio-8081-exec-10] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "No se encontraron clientes en la base de datos"]
+2022-12-03 23:35:41.226 ERROR 37940 --- [http-nio-8081-exec-4] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/tech_camp/db_crud/api] threw exception [Request processing failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property 'clientName' found for type 'Client'] with root cause
+
+org.springframework.data.mapping.PropertyReferenceException: No property 'clientName' found for type 'Client'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:91) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:438) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:414) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:367) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330) ~[na:na]
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:349) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:332) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.QueryUtils.toJpaOrder(QueryUtils.java:708) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.QueryUtils.toOrders(QueryUtils.java:661) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryCreator.complete(JpaQueryCreator.java:205) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryCreator.complete(JpaQueryCreator.java:153) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryCreator.complete(JpaQueryCreator.java:60) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:96) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.createQuery(PartTreeJpaQuery.java:232) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.doCreateQuery(PartTreeJpaQuery.java:106) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.createQuery(AbstractJpaQuery.java:233) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$PagedExecution.doExecute(JpaQueryExecution.java:177) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81) ~[spring-data-commons-2.7.5.jar:2.7.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.23.jar:5.3.23]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.23.jar:5.3.23]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.23.jar:5.3.23]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.23.jar:5.3.23]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145) ~[spring-data-jpa-2.7.5.jar:2.7.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.23.jar:5.3.23]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.23.jar:5.3.23]
+	at com.sun.proxy.$Proxy109.findByFirstNameContainingIgnoreCaseOrMiddleNameContainingIgnoreCaseOrLastNameContainsIgnoreCase(Unknown Source) ~[na:na]
+	at com.techcamp.spa.infrastructure.adapter.ClientJpaAdapter.getByNameContaining(ClientJpaAdapter.java:53) ~[main/:na]
+	at com.techcamp.spa.domain.service.ClientServiceImpl.getByNameContaining(ClientServiceImpl.java:41) ~[main/:na]
+	at com.techcamp.spa.application.controller.ClientController.read(ClientController.java:37) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
