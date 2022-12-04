@@ -1,13 +1,13 @@
-package com.techcamp.spring.crud;
+package com.techcamp.spa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringCrudApplication {
+public class SpaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCrudApplication.class, args);
+		SpringApplication.run(SpaApplication.class, args);
 	}
 
 }
