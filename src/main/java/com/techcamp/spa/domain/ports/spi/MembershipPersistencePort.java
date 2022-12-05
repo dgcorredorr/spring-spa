@@ -12,6 +12,6 @@ public interface MembershipPersistencePort {
 
     MembershipDto update(MembershipDto membership);
 
-    Boolean deleteById(Byte membershipId);
+    void deleteById(Byte membershipId);
 
 }

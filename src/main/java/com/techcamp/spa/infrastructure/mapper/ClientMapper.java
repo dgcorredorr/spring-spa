@@ -3,14 +3,10 @@ package com.techcamp.spa.infrastructure.mapper;
 import com.techcamp.spa.domain.data.ClientDto;
 import com.techcamp.spa.infrastructure.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Component
-public class ClientMapper {
+public class ClientMapper extends Mapper<ClientDto, Client> {
     private final GenderMapper genderMapper;
     private final DocumentTypeMapper documentTypeMapper;
     private final MembershipMapper membershipMapper;
@@ -21,6 +17,7 @@ public class ClientMapper {
         this.documentTypeMapper = documentTypeMapper;
         this.membershipMapper = membershipMapper;
     }
+    @Override
     public ClientDto toDomain(Client client) {
         return ClientDto.builder()
                 .clientId(client.getClientId())
@@ -37,7 +34,7 @@ public class ClientMapper {
                 .membership(membershipMapper.toDomain(client.getMembership()))
                 .build();
     }
-
+    @Override
     public Client toEntity(ClientDto client) {
         return Client.builder()
                 .clientId(client.getClientId())
@@ -53,22 +50,6 @@ public class ClientMapper {
                 .documentType(documentTypeMapper.toEntity(client.getDocumentType()))
                 .membership(membershipMapper.toEntity(client.getMembership()))
                 .build();
-    }
-
-    public List<ClientDto> toDomainList(List<Client> clientList) {
-        return clientList.stream()
-                .map(this::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    public List<Client> toEntityList(List<ClientDto> clientList) {
-        return clientList.stream()
-                .map(this::toEntity)
-                .collect(Collectors.toList());
-    }
-
-    public Page<ClientDto> toDomainPage(Page<Client> clientPage) {
-        return clientPage.map(this::toDomain);
     }
 
 }

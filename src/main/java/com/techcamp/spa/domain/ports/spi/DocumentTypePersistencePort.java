@@ -12,6 +12,6 @@ public interface DocumentTypePersistencePort {
 
     DocumentTypeDto update(DocumentTypeDto documentType);
 
-    Boolean deleteById(Byte documentTypeId);
+    void deleteById(Byte documentTypeId);
 
 }

@@ -4,11 +4,9 @@ import com.techcamp.spa.domain.data.MembershipDto;
 import com.techcamp.spa.infrastructure.entity.Membership;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Component
-public class MembershipMapper {
+public class MembershipMapper extends Mapper<MembershipDto, Membership> {
+    @Override
     public MembershipDto toDomain(Membership membership) {
         return (membership != null) ? MembershipDto.builder()
                 .membershipId(membership.getMembershipId())
@@ -18,6 +16,7 @@ public class MembershipMapper {
                 .build() : null;
     }
 
+    @Override
     public Membership toEntity(MembershipDto membership) {
         return (membership != null) ? Membership.builder()
                 .membershipId(membership.getMembershipId())
@@ -27,15 +26,4 @@ public class MembershipMapper {
                 .build() : null;
     }
 
-    public List<MembershipDto> toDomainList(List<Membership> membershipList) {
-        return membershipList.stream()
-                .map(this::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    public List<Membership> toEntityList(List<MembershipDto> membershipList) {
-        return membershipList.stream()
-                .map(this::toEntity)
-                .collect(Collectors.toList());
-    }
 }

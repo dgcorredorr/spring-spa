@@ -12,6 +12,6 @@ public interface GenderServicePort {
 
     GenderDto update(GenderDto gender);
 
-    Boolean deleteById(Byte genderId);
+    void deleteById(Byte genderId);
     
 }
