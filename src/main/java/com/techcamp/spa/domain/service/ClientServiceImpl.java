@@ -3,7 +3,6 @@ package com.techcamp.spa.domain.service;
 import com.techcamp.spa.domain.data.ClientDto;
 import com.techcamp.spa.domain.ports.api.ClientServicePort;
 import com.techcamp.spa.domain.ports.spi.ClientPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,7 +10,6 @@ public class ClientServiceImpl implements ClientServicePort {
 
     private final ClientPersistencePort clientPersistencePort;
 
-    @Autowired
     public ClientServiceImpl(ClientPersistencePort clientPersistencePort) {
         this.clientPersistencePort = clientPersistencePort;
     }
@@ -32,13 +30,8 @@ public class ClientServiceImpl implements ClientServicePort {
     }
 
     @Override
-    public Page<ClientDto> getByDocumentNumberContaining(String documentNumber, Pageable pageable) {
-        return clientPersistencePort.getByDocumentNumberContaining(documentNumber, pageable);
-    }
-
-    @Override
-    public Page<ClientDto> getByNameContaining(String name, Pageable pageable) {
-        return clientPersistencePort.getByNameContaining(name, pageable);
+    public Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable) {
+        return clientPersistencePort.getByNameContainingAndDocumentNumberContaining(name, documentNumber, pageable);
     }
 
     @Override

@@ -12,9 +12,7 @@ public interface ClientPersistencePort {
 
     Page<ClientDto> getAll(Pageable pageable);
 
-    Page<ClientDto> getByDocumentNumberContaining(String documentNumber, Pageable pageable);
-
-    Page<ClientDto> getByNameContaining(String name, Pageable pageable);
+    Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable);
 
     ClientDto update(ClientDto client);
 

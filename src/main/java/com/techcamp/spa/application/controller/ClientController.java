@@ -26,19 +26,17 @@ public class ClientController {
 
     @GetMapping
     public ResponseEntity<?> read(@RequestParam(required = false) Long clientId,
-                                 @RequestParam(required = false) String clientName,
-                                 @RequestParam(required = false) String documentNumber,
-                                 @PageableDefault(size = 20) Pageable pageable) {
+                                  @RequestParam(required = false) String clientName,
+                                  @RequestParam(required = false) String documentNumber,
+                                  @PageableDefault(size = 20) Pageable pageable) {
         try {
-            if (clientId != null ^ clientName != null ^ documentNumber != null) {
+            if (clientId != null ^ (clientName != null || documentNumber != null)) {
                 if (clientId != null) {
                     return new ResponseEntity<>(clientServicePort.getById(clientId), HttpStatus.OK);
-                } else if (clientName != null) {
-                    return new ResponseEntity<>(clientServicePort.getByNameContaining(clientName, pageable), HttpStatus.OK);
                 } else {
-                    return new ResponseEntity<>(clientServicePort.getByDocumentNumberContaining(documentNumber, pageable), HttpStatus.OK);
+                    return new ResponseEntity<>(clientServicePort.getByNameContainingAndDocumentNumberContaining(clientName, documentNumber, pageable), HttpStatus.OK);
                 }
-            } else if (clientId == null && clientName == null) {
+            } else if (clientId == null) {
                 return new ResponseEntity<>(clientServicePort.getAll(pageable), HttpStatus.OK);
             } else {
                 throw new IllegalArgumentException();
@@ -46,7 +44,7 @@ public class ClientController {
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron clientes en la base de datos");
         } catch (IllegalArgumentException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ingresar un solo parámetro");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No combinar clientId con otro parámetro");
         }
     }
 

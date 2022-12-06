@@ -1,6 +1,5 @@
 package com.techcamp.spa.domain.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +18,5 @@ public class SessionInfoDto {
     private Long clientId;
     private ClientDto client;
     private Long appointmentId;
-    @JsonIgnore
-    private AppointmentDto appointment;
     private LocalDateTime sessionDate;
 }

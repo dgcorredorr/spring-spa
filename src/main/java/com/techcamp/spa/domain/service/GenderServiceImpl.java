@@ -3,7 +3,6 @@ package com.techcamp.spa.domain.service;
 import com.techcamp.spa.domain.data.GenderDto;
 import com.techcamp.spa.domain.ports.api.GenderServicePort;
 import com.techcamp.spa.domain.ports.spi.GenderPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ public class GenderServiceImpl implements GenderServicePort {
 
     private final GenderPersistencePort genderPersistencePort;
 
-    @Autowired
     public GenderServiceImpl(GenderPersistencePort genderPersistencePort) {
         this.genderPersistencePort = genderPersistencePort;
     }
