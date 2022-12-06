@@ -40,17 +40,8 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     }
 
     @Override
-    public Page<ClientDto> getByDocumentNumberContaining(String documentNumber, Pageable pageable) throws NoSuchElementException {
-        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientRepository.findByDocumentNumberContainingIgnoreCase(documentNumber, pageable));
-        if (clientPage.isEmpty()) {
-            throw new NoSuchElementException();
-        }
-        return clientPage;
-    }
-
-    @Override
-    public Page<ClientDto> getByNameContaining(String name, Pageable pageable) throws NoSuchElementException {
-        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientRepository.findByFirstNameContainingIgnoreCaseOrMiddleNameContainingIgnoreCaseOrLastNameContainsIgnoreCase(name, name, name, pageable));
+    public Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable) throws NoSuchElementException {
+        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientRepository.getByDocumentNumberContainingIgnoreCaseOrNameContainingIgnoreCase(name, documentNumber, pageable));
         if (clientPage.isEmpty()) {
             throw new NoSuchElementException();
         }

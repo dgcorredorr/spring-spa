@@ -32,7 +32,6 @@ public class PlanMapper extends Mapper<PlanDto, Plan> {
                 .description(plan.getDescription())
                 .capacity(plan.getCapacity())
                 .discount(plan.getDiscount())
-                .areas(areaMapper.toEntityList(plan.getAreas()))
                 .build() : null;
     }
 }

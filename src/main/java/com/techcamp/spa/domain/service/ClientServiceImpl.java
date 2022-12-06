@@ -32,13 +32,8 @@ public class ClientServiceImpl implements ClientServicePort {
     }
 
     @Override
-    public Page<ClientDto> getByDocumentNumberContaining(String documentNumber, Pageable pageable) {
-        return clientPersistencePort.getByDocumentNumberContaining(documentNumber, pageable);
-    }
-
-    @Override
-    public Page<ClientDto> getByNameContaining(String name, Pageable pageable) {
-        return clientPersistencePort.getByNameContaining(name, pageable);
+    public Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable) {
+        return clientPersistencePort.getByNameContainingAndDocumentNumberContaining(name, documentNumber, pageable);
     }
 
     @Override

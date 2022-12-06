@@ -21,7 +21,7 @@ public class SpecialistMapper extends Mapper<SpecialistDto, Specialist> {
 
     @Override
     public SpecialistDto toDomain(Specialist specialist) {
-        return SpecialistDto.builder()
+        return (specialist != null) ? SpecialistDto.builder()
                 .specialistId(specialist.getSpecialistId())
                 .genderId(specialist.getGenderId())
                 .areaId(specialist.getAreaId())
@@ -32,12 +32,12 @@ public class SpecialistMapper extends Mapper<SpecialistDto, Specialist> {
                 .gender(genderMapper.toDomain(specialist.getGender()))
                 .area(areaMapper.toDomain(specialist.getArea()))
                 .workHours(workHoursMapper.toDomain(specialist.getWorkHours()))
-                .build();
+                .build() : null;
     }
 
     @Override
     public Specialist toEntity(SpecialistDto specialist) {
-        return Specialist.builder()
+        return (specialist != null) ? Specialist.builder()
                 .specialistId(specialist.getSpecialistId())
                 .genderId(specialist.getGenderId())
                 .areaId(specialist.getAreaId())
@@ -45,9 +45,6 @@ public class SpecialistMapper extends Mapper<SpecialistDto, Specialist> {
                 .firstName(specialist.getFirstName())
                 .middleName(specialist.getMiddleName())
                 .lastName(specialist.getLastName())
-                .gender(genderMapper.toEntity(specialist.getGender()))
-                .area(areaMapper.toEntity(specialist.getArea()))
-                .workHours(workHoursMapper.toEntity(specialist.getWorkHours()))
-                .build();
+                .build() : null;
     }
 }
