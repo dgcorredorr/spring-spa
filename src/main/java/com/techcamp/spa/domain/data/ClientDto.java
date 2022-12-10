@@ -24,5 +24,4 @@ public class ClientDto {
     private String lastName;
     private String documentNumber;
     private LocalDate birthDate;
-
 }
