@@ -25,7 +25,7 @@ public class SessionInfo {
     private Long clientId;
     @Column(name = "APPOINTMENT_ID", nullable = false)
     private Long appointmentId;
-    @Column(name = "SESSION_DATE", nullable = false)
+    @Column(name = "SESSION_DATE", columnDefinition = "DATE", nullable = false)
     private LocalDateTime sessionDate;
 
     @ManyToOne

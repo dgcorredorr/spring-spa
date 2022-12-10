@@ -79,4 +79,14 @@ public class CrudConfig {
         return new SpecialistServiceImpl(specialistPersistence());
     }
 
+    @Bean
+    public PlanPersistencePort planPersistence() {
+        return new PlanJpaAdapter();
+    }
+
+    @Bean
+    public PlanServicePort planService() {
+        return new PlanServiceImpl(planPersistence());
+    }
+
 }

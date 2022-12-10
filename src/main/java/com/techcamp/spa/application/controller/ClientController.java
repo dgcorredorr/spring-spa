@@ -4,6 +4,7 @@ import com.techcamp.spa.domain.data.ClientDto;
 import com.techcamp.spa.domain.ports.api.ClientServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,8 @@ public class ClientController {
             } else {
                 throw new IllegalArgumentException();
             }
+        } catch (InvalidDataAccessResourceUsageException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Parámetro de ordenamiento inválido");
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron clientes en la base de datos");
         } catch (IllegalArgumentException e) {

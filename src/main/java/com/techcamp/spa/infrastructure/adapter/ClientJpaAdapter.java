@@ -6,6 +6,7 @@ import com.techcamp.spa.infrastructure.mapper.ClientMapper;
 import com.techcamp.spa.infrastructure.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     }
 
     @Override
-    public Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable) throws NoSuchElementException {
+    public Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable) throws NoSuchElementException, InvalidDataAccessResourceUsageException {
         Page<ClientDto> clientPage = clientMapper.toDomainPage(clientRepository.getByDocumentNumberContainingIgnoreCaseOrNameContainingIgnoreCase(name, documentNumber, pageable));
         if (clientPage.isEmpty()) {
             throw new NoSuchElementException();
