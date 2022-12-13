@@ -3,7 +3,7 @@ package com.techcamp.spa.infrastructure.adapter;
 import com.techcamp.spa.domain.data.GenderDto;
 import com.techcamp.spa.domain.ports.spi.GenderPersistencePort;
 import com.techcamp.spa.infrastructure.mapper.GenderMapper;
-import com.techcamp.spa.infrastructure.repository.GenderRepository;
+import com.techcamp.spa.infrastructure.repository.GenderJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class GenderJpaAdapter implements GenderPersistencePort {
+public class GenderPersistenceAdapter implements GenderPersistencePort {
 
     @Autowired
-    private GenderRepository genderRepository;
+    private GenderJpaRepository genderJpaRepository;
 
     @Autowired
     private GenderMapper genderMapper;
 
     @Override
     public GenderDto save(GenderDto genderDto) throws DataIntegrityViolationException {
-        return genderMapper.toDomain(genderRepository.save(genderMapper.toEntity(genderDto)));
+        return genderMapper.toDomain(genderJpaRepository.save(genderMapper.toEntity(genderDto)));
     }
 
     @Override
     public List<GenderDto> getAll() {
-        List<GenderDto> genderList = genderMapper.toDomainList(genderRepository.findAll());
+        List<GenderDto> genderList = genderMapper.toDomainList(genderJpaRepository.findAll());
         if (genderList.isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -38,7 +38,7 @@ public class GenderJpaAdapter implements GenderPersistencePort {
     public GenderDto update(GenderDto genderDto) throws NoSuchElementException {
         if (genderDto.getGenderId() == null) {
             throw new DataIntegrityViolationException("GenderId no ingresado");
-        } else if (genderRepository.existsById(genderDto.getGenderId())) {
+        } else if (genderJpaRepository.existsById(genderDto.getGenderId())) {
             return save(genderDto);
         } else {
             throw new NoSuchElementException();
@@ -47,8 +47,8 @@ public class GenderJpaAdapter implements GenderPersistencePort {
 
     @Override
     public void deleteById(Byte genderId) throws NoSuchElementException {
-        if (genderRepository.existsById(genderId)) {
-            genderRepository.deleteById(genderId);
+        if (genderJpaRepository.existsById(genderId)) {
+            genderJpaRepository.deleteById(genderId);
         } else {
             throw new NoSuchElementException();
         }

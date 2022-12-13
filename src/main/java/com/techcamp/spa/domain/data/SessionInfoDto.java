@@ -18,5 +18,6 @@ public class SessionInfoDto {
     private Long clientId;
     private ClientDto client;
     private Long appointmentId;
+    private AppointmentDto appointment;
     private LocalDateTime sessionDate;
 }

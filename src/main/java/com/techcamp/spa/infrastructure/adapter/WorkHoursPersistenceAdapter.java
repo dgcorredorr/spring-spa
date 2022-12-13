@@ -3,7 +3,7 @@ package com.techcamp.spa.infrastructure.adapter;
 import com.techcamp.spa.domain.data.WorkHoursDto;
 import com.techcamp.spa.domain.ports.spi.WorkHoursPersistencePort;
 import com.techcamp.spa.infrastructure.mapper.WorkHoursMapper;
-import com.techcamp.spa.infrastructure.repository.WorkHoursRepository;
+import com.techcamp.spa.infrastructure.repository.WorkHoursJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class WorkHoursJpaAdapter implements WorkHoursPersistencePort {
+public class WorkHoursPersistenceAdapter implements WorkHoursPersistencePort {
 
     @Autowired
-    private WorkHoursRepository workHoursRepository;
+    private WorkHoursJpaRepository workHoursJpaRepository;
 
     @Autowired
     private WorkHoursMapper workHoursMapper;
 
     @Override
     public WorkHoursDto save(WorkHoursDto workHoursDto) throws DataIntegrityViolationException {
-        return workHoursMapper.toDomain(workHoursRepository.save(workHoursMapper.toEntity(workHoursDto)));
+        return workHoursMapper.toDomain(workHoursJpaRepository.save(workHoursMapper.toEntity(workHoursDto)));
     }
 
     @Override
     public List<WorkHoursDto> getAll() {
-        List<WorkHoursDto> workHoursList = workHoursMapper.toDomainList(workHoursRepository.findAll());
+        List<WorkHoursDto> workHoursList = workHoursMapper.toDomainList(workHoursJpaRepository.findAll());
         if (workHoursList.isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -38,7 +38,7 @@ public class WorkHoursJpaAdapter implements WorkHoursPersistencePort {
     public WorkHoursDto update(WorkHoursDto workHoursDto) throws NoSuchElementException {
         if (workHoursDto.getWorkHoursId() == null) {
             throw new DataIntegrityViolationException("WorkHoursId no ingresado");
-        } else if (workHoursRepository.existsById(workHoursDto.getWorkHoursId())) {
+        } else if (workHoursJpaRepository.existsById(workHoursDto.getWorkHoursId())) {
             return save(workHoursDto);
         } else {
             throw new NoSuchElementException();
@@ -47,8 +47,8 @@ public class WorkHoursJpaAdapter implements WorkHoursPersistencePort {
 
     @Override
     public void deleteById(Byte workHoursId) throws NoSuchElementException {
-        if (workHoursRepository.existsById(workHoursId)) {
-            workHoursRepository.deleteById(workHoursId);
+        if (workHoursJpaRepository.existsById(workHoursId)) {
+            workHoursJpaRepository.deleteById(workHoursId);
         } else {
             throw new NoSuchElementException();
         }

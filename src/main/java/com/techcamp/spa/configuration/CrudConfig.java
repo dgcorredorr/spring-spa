@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class CrudConfig {
     @Bean
     public ClientPersistencePort clientPersistence() {
-        return new ClientJpaAdapter();
+        return new ClientPersistenceAdapter();
     }
 
     @Bean
@@ -21,7 +21,7 @@ public class CrudConfig {
 
     @Bean
     public DocumentTypePersistencePort documentTypePersistence() {
-        return new DocumentTypeJpaAdapter();
+        return new DocumentTypePersistenceAdapter();
     }
 
     @Bean
@@ -31,7 +31,7 @@ public class CrudConfig {
 
     @Bean
     public GenderPersistencePort genderPersistence() {
-        return new GenderJpaAdapter();
+        return new GenderPersistenceAdapter();
     }
 
     @Bean
@@ -41,7 +41,7 @@ public class CrudConfig {
 
     @Bean
     public MembershipPersistencePort membershipPersistence() {
-        return new MembershipJpaAdapter();
+        return new MembershipPersistenceAdapter();
     }
 
     @Bean
@@ -51,7 +51,7 @@ public class CrudConfig {
 
     @Bean
     public AreaPersistencePort areaPersistence() {
-        return new AreaJpaAdapter();
+        return new AreaPersistenceAdapter();
     }
 
     @Bean
@@ -61,7 +61,7 @@ public class CrudConfig {
 
     @Bean
     public WorkHoursPersistencePort workHoursPersistence() {
-        return new WorkHoursJpaAdapter();
+        return new WorkHoursPersistenceAdapter();
     }
 
     @Bean
@@ -71,7 +71,7 @@ public class CrudConfig {
 
     @Bean
     public SpecialistPersistencePort specialistPersistence() {
-        return new SpecialistJpaAdapter();
+        return new SpecialistPersistenceAdapter();
     }
 
     @Bean
@@ -81,7 +81,7 @@ public class CrudConfig {
 
     @Bean
     public PlanPersistencePort planPersistence() {
-        return new PlanJpaAdapter();
+        return new PlanPersistenceAdapter();
     }
 
     @Bean
@@ -89,4 +89,23 @@ public class CrudConfig {
         return new PlanServiceImpl(planPersistence());
     }
 
+    @Bean
+    public AppointmentPersistencePort appointmentPersistence() {
+        return new AppointmentPersistenceAdapter();
+    }
+
+    @Bean
+    public AppointmentServicePort appointmentService() {
+        return new AppointmentServiceImpl(appointmentPersistence());
+    }
+
+    @Bean
+    public SessionInfoPersistencePort sessionInfoPersistence() {
+        return new SessionInfoPersistenceAdapter();
+    }
+
+    @Bean
+    public SessionInfoServicePort sessionInfoService() {
+        return new SessionInfoServiceImpl(sessionInfoPersistence());
+    }
 }

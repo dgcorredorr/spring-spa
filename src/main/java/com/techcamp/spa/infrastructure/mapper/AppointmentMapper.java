@@ -9,12 +9,10 @@ import org.springframework.stereotype.Component;
 public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
 
     private final PlanMapper planMapper;
-    private final SessionInfoMapper sessionInfoMapper;
 
     @Autowired
-    public AppointmentMapper(PlanMapper planMapper, SessionInfoMapper sessionInfoMapper) {
+    public AppointmentMapper(PlanMapper planMapper) {
         this.planMapper = planMapper;
-        this.sessionInfoMapper = sessionInfoMapper;
     }
 
     @Override
@@ -24,7 +22,6 @@ public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
                 .planId(appointment.getPlanId())
                 .totalFee(appointment.getTotalFee())
                 .plan(planMapper.toDomain(appointment.getPlan()))
-                .sessions(sessionInfoMapper.toDomainList(appointment.getSessions()))
                 .build() : null;
     }
 

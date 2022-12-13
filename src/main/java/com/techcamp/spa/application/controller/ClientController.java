@@ -57,7 +57,7 @@ public class ClientController {
             ClientDto clientSaved = clientServicePort.save(client);
             return new ResponseEntity<>(clientServicePort.getById(clientSaved.getClientId()), HttpStatus.CREATED);
         } catch (NoSuchElementException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_MODIFIED, "No se guardó el cliente en la base de datos");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "No se guardó el cliente en la base de datos");
         } catch (DataIntegrityViolationException e) {
             dataIntegrityViolationExceptionHandler(e);
             return null;
@@ -78,7 +78,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{clientId}")
-    public ResponseEntity<Object> deleteById(@PathVariable("clientId") Long clientId) {
+    public ResponseEntity<?> deleteById(@PathVariable("clientId") Long clientId) {
         try {
             clientServicePort.deleteById(clientId);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -88,7 +88,7 @@ public class ClientController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Object> delete(@RequestBody ClientDto client) {
+    public ResponseEntity<?> delete(@RequestBody ClientDto client) {
         try {
             clientServicePort.delete(client);
             return new ResponseEntity<>(HttpStatus.OK);

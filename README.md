@@ -36,7 +36,7 @@ La empresa requiere automatizar su proceso de agendamiento, para que genere la i
 - Las citas que se solicitan son de un tipo (Ej.: Facial, corporal, uñas, etc.)
 - Algunos clientes deciden realizar el agendamiento de más de un tipo (Ej.: Facial, corporal, uñas, etc.)
 - Cada sesión tiene una duración de 2 horas
-- Los usuarios además tiene la posibilidad de agendar diferentes planes (Ej.: Spa Para parejas, masajes de relajación, tratamientos faciales, spa para empresas, etc)   
+- Los usuarios además tiene la posibilidad de agendar diferentes planes (Ej.: Spa Para parejas, masajes de relajación, tratamientos faciales, spa para empresas, etc.)   
 - Se requiere agendar todas las citas solicitadas teniendo en cuenta las siguientes premisas:
   - Prioridad de atención por tipo membresía
   - Prioridad de atención por tipo de plan 
@@ -48,19 +48,19 @@ cuentan con una) y al tipo de cita solicitada (especialidad).
 
 Ej.: 
 
-- Sesión corporal para membresÍa Platino es $100.000
+- Sesión corporal para membresía Platino es $100.000
 - Sesión corporal para membresía Oro es $170.000
 
 ### Resultado esperado:
 
-El proceso generará información de la agenda por profesional con la citas diarias y el valor a pagar por cada usuario
+El proceso generará información de la agenda por profesional con las citas diarias y el valor a pagar por cada usuario
 
 ## Requerimientos no funcionales
 
 - Servicios REST
 - Se debe permitir realizar carga y descarga de la información mediante el uso de archivos
 - Stack: Angular - PrimeNG, DB Oracle, Spring Boot - Java - Gradle
-- Documentar en forma clara las referencias, índices y hints requeridos en la db.
+- Documentar en forma clara las referencias, hints e índices requeridos en la db.
 - Al menos uno de los procesos transaccionales, se debe usar JPA.
 - Al menos uno de los procesos transaccionales, se debe usar JPQL.
 - Al menos uno de los procesos transaccionales, se debe usar JDBC invocando PLSQL.

@@ -10,11 +10,13 @@ public class SessionInfoMapper extends Mapper<SessionInfoDto, SessionInfo>{
 
     private final SpecialistMapper specialistMapper;
     private final ClientMapper clientMapper;
+    private final AppointmentMapper appointmentMapper;
 
     @Autowired
-    public SessionInfoMapper(SpecialistMapper specialistMapper, ClientMapper clientMapper) {
+    public SessionInfoMapper(SpecialistMapper specialistMapper, ClientMapper clientMapper, AppointmentMapper appointmentMapper) {
         this.specialistMapper = specialistMapper;
         this.clientMapper = clientMapper;
+        this.appointmentMapper = appointmentMapper;
     }
 
     @Override
@@ -27,6 +29,7 @@ public class SessionInfoMapper extends Mapper<SessionInfoDto, SessionInfo>{
                 .sessionDate(sessionInfo.getSessionDate())
                 .specialist(specialistMapper.toDomain(sessionInfo.getSpecialist()))
                 .client(clientMapper.toDomain(sessionInfo.getClient()))
+                .appointment(appointmentMapper.toDomain(sessionInfo.getAppointment()))
                 .build() : null;
     }
 

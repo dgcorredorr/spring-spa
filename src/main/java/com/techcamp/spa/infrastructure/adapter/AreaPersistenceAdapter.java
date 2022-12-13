@@ -3,7 +3,7 @@ package com.techcamp.spa.infrastructure.adapter;
 import com.techcamp.spa.domain.data.AreaDto;
 import com.techcamp.spa.domain.ports.spi.AreaPersistencePort;
 import com.techcamp.spa.infrastructure.mapper.AreaMapper;
-import com.techcamp.spa.infrastructure.repository.AreaRepository;
+import com.techcamp.spa.infrastructure.repository.AreaJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class AreaJpaAdapter implements AreaPersistencePort {
+public class AreaPersistenceAdapter implements AreaPersistencePort {
 
     @Autowired
-    private AreaRepository areaRepository;
+    private AreaJpaRepository areaJpaRepository;
 
     @Autowired
     private AreaMapper areaMapper;
 
     @Override
     public AreaDto save(AreaDto areaDto) throws DataIntegrityViolationException {
-        return areaMapper.toDomain(areaRepository.save(areaMapper.toEntity(areaDto)));
+        return areaMapper.toDomain(areaJpaRepository.save(areaMapper.toEntity(areaDto)));
     }
 
     @Override
     public List<AreaDto> getAll() {
-        List<AreaDto> areaList = areaMapper.toDomainList(areaRepository.findAll());
+        List<AreaDto> areaList = areaMapper.toDomainList(areaJpaRepository.findAll());
         if (areaList.isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -38,7 +38,7 @@ public class AreaJpaAdapter implements AreaPersistencePort {
     public AreaDto update(AreaDto areaDto) throws NoSuchElementException {
         if (areaDto.getAreaId() == null) {
             throw new DataIntegrityViolationException("AreaId no ingresado");
-        } else if (areaRepository.existsById(areaDto.getAreaId())) {
+        } else if (areaJpaRepository.existsById(areaDto.getAreaId())) {
             return save(areaDto);
         } else {
             throw new NoSuchElementException();
@@ -47,8 +47,8 @@ public class AreaJpaAdapter implements AreaPersistencePort {
 
     @Override
     public void deleteById(Byte areaId) throws NoSuchElementException {
-        if (areaRepository.existsById(areaId)) {
-            areaRepository.deleteById(areaId);
+        if (areaJpaRepository.existsById(areaId)) {
+            areaJpaRepository.deleteById(areaId);
         } else {
             throw new NoSuchElementException();
         }

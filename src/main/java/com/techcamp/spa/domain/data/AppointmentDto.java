@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,5 +14,4 @@ public class AppointmentDto {
     private Byte planId;
     private PlanDto plan;
     private Integer totalFee;
-    private List<SessionInfoDto> sessions;
 }

@@ -3,7 +3,7 @@ package com.techcamp.spa.infrastructure.adapter;
 import com.techcamp.spa.domain.data.ClientDto;
 import com.techcamp.spa.domain.ports.spi.ClientPersistencePort;
 import com.techcamp.spa.infrastructure.mapper.ClientMapper;
-import com.techcamp.spa.infrastructure.repository.ClientRepository;
+import com.techcamp.spa.infrastructure.repository.ClientJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
@@ -14,26 +14,26 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 
 @Service
-public class ClientJpaAdapter implements ClientPersistencePort {
+public class ClientPersistenceAdapter implements ClientPersistencePort {
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientJpaRepository clientJpaRepository;
     @Autowired
     private ClientMapper clientMapper;
 
     @Override
     public ClientDto save(ClientDto client) throws DataIntegrityViolationException {
-        return clientMapper.toDomain(clientRepository.save(clientMapper.toEntity(client)));
+        return clientMapper.toDomain(clientJpaRepository.save(clientMapper.toEntity(client)));
     }
 
     @Override
     public ClientDto getById(Long id) throws NoSuchElementException {
-        return clientMapper.toDomain(clientRepository.findById(id).orElseThrow());
+        return clientMapper.toDomain(clientJpaRepository.findById(id).orElseThrow());
     }
 
     @Override
     public Page<ClientDto> getAll(Pageable pageable) throws NoSuchElementException {
-        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientRepository.findAll(pageable));
+        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientJpaRepository.findAll(pageable));
         if (clientPage.isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -42,7 +42,7 @@ public class ClientJpaAdapter implements ClientPersistencePort {
 
     @Override
     public Page<ClientDto> getByNameContainingAndDocumentNumberContaining(String name, String documentNumber, Pageable pageable) throws NoSuchElementException, InvalidDataAccessResourceUsageException {
-        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientRepository.getByDocumentNumberContainingIgnoreCaseOrNameContainingIgnoreCase(name, documentNumber, pageable));
+        Page<ClientDto> clientPage = clientMapper.toDomainPage(clientJpaRepository.getByDocumentNumberContainingIgnoreCaseOrNameContainingIgnoreCase(name, documentNumber, pageable));
         if (clientPage.isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -53,7 +53,7 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     public ClientDto update(ClientDto clientDto) throws NoSuchElementException {
         if (clientDto.getClientId() == null) {
             throw new DataIntegrityViolationException("ClientId no ingresado");
-        } else if (clientRepository.existsById(clientDto.getClientId())) {
+        } else if (clientJpaRepository.existsById(clientDto.getClientId())) {
             return save(clientDto);
         } else {
             throw new NoSuchElementException();
@@ -62,8 +62,8 @@ public class ClientJpaAdapter implements ClientPersistencePort {
 
     @Override
     public void deleteById(Long clientId) throws NoSuchElementException {
-        if (clientRepository.existsById(clientId)) {
-            clientRepository.deleteById(clientId);
+        if (clientJpaRepository.existsById(clientId)) {
+            clientJpaRepository.deleteById(clientId);
         } else {
             throw new NoSuchElementException();
         }
@@ -73,8 +73,8 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     public void delete(ClientDto clientDto) throws NoSuchElementException {
         if (clientDto.getClientId() == null) {
             throw new DataIntegrityViolationException("ClientId no ingresado");
-        } else if (clientRepository.existsById(clientDto.getClientId())) {
-            clientRepository.delete(clientMapper.toEntity(clientDto));
+        } else if (clientJpaRepository.existsById(clientDto.getClientId())) {
+            clientJpaRepository.delete(clientMapper.toEntity(clientDto));
         } else {
             throw new NoSuchElementException();
         }

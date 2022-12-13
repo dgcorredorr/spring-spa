@@ -53,7 +53,7 @@ public class SpecialistController {
             SpecialistDto specialistSaved = specialistServicePort.save(specialist);
             return new ResponseEntity<>(specialistServicePort.getById(specialistSaved.getSpecialistId()), HttpStatus.CREATED);
         } catch (NoSuchElementException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_MODIFIED, "No se guardó el especialista en la base de datos");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "No se guardó el especialista en la base de datos");
         } catch (DataIntegrityViolationException e) {
             dataIntegrityViolationExceptionHandler(e);
             return null;
