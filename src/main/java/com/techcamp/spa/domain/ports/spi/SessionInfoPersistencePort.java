@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 public interface SessionInfoPersistencePort {
     SessionInfoDto save(SessionInfoDto sessionInfo);
 
+    SessionInfoDto getById(Long id);
+
     Page<SessionInfoDto> getAll(Pageable pageable);
 
     Integer isAvailable(Long clientId, Short specialistId, Long appointmentId, LocalDateTime sessionDate);

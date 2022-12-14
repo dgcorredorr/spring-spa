@@ -8,21 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ClientJpaRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT " +
-            "c.client_id," +
-            "c.gender_id," +
-            "c.document_type_id," +
-            "c.membership_id," +
-            "c.first_name," +
-            "c.middle_name," +
-            "c.last_name," +
-            "c.document_number," +
-            "c.birth_date " +
+            "c " +
             "FROM Client c " +
-            "WHERE (lower(c.first_name) LIKE lower(concat('%',concat(?1,'%'))) OR " +
-            "lower(c.last_name) LIKE lower(concat('%',concat(?1,'%'))) OR " +
-            "lower(c.middle_name) LIKE lower(concat('%',concat(?1,'%')))) " +
-            "AND lower(c.document_number) LIKE lower(concat('%',concat(?2,'%')))",
-            countQuery = "SELECT count(1) FROM Client",
-            nativeQuery = true)
+            "WHERE (lower(c.firstName) LIKE lower(concat('%',concat(?1,'%'))) OR " +
+            "lower(c.lastName) LIKE lower(concat('%',concat(?1,'%'))) OR " +
+            "lower(c.middleName) LIKE lower(concat('%',concat(?1,'%')))) " +
+            "AND lower(c.documentNumber) LIKE lower(concat('%',concat(?2,'%')))")
     Page<Client> getByDocumentNumberContainingIgnoreCaseOrNameContainingIgnoreCase(String name, String documentNumber, Pageable pageable);
 }

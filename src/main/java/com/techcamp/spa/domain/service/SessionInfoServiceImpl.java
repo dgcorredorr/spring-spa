@@ -22,6 +22,10 @@ public class SessionInfoServiceImpl implements SessionInfoServicePort {
     }
 
     @Override
+    public SessionInfoDto getById(Long id) {
+        return sessionInfoPersistencePort.getById(id);
+    }
+    @Override
     public Page<SessionInfoDto> getAll(Pageable pageable) {
         return sessionInfoPersistencePort.getAll(pageable);
     }

@@ -28,7 +28,16 @@ public class SessionInfoPersistenceAdapter implements SessionInfoPersistencePort
 
     @Override
     public SessionInfoDto save(SessionInfoDto sessionInfoDto) throws DataIntegrityViolationException {
-        return sessionInfoMapper.toDomain(sessionInfoJpaRepository.save(sessionInfoMapper.toEntity(sessionInfoDto)));
+        if (isAvailable(sessionInfoDto.getClientId(), sessionInfoDto.getSpecialistId(), sessionInfoDto.getAppointmentId(), sessionInfoDto.getSessionDate()) == 1) {
+            return sessionInfoMapper.toDomain(sessionInfoJpaRepository.save(sessionInfoMapper.toEntity(sessionInfoDto)));
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public SessionInfoDto getById(Long id) throws NoSuchElementException {
+        return sessionInfoMapper.toDomain(sessionInfoJpaRepository.findById(id).orElseThrow());
     }
 
     @Override
