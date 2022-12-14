@@ -9,6 +9,8 @@ public interface PlanPersistencePort {
 
     List<PlanDto> getAll();
 
+    PlanDto getById(Byte id);
+
     PlanDto update(PlanDto plan);
 
     void deleteById(Byte planId);

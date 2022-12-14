@@ -43,7 +43,7 @@ public class AppointmentController {
                 AppointmentDto appointmentSaved = appointmentServicePort.save(appointment);
                 return new ResponseEntity<>(appointmentServicePort.getById(appointmentSaved.getAppointmentId()), HttpStatus.CREATED);
             } else {
-                throw new IllegalStateException();
+                throw new IllegalArgumentException("No incluir el costo total en la petición");
             }
 
         } catch (NoSuchElementException e) {
@@ -51,8 +51,8 @@ public class AppointmentController {
         } catch (DataIntegrityViolationException e) {
             dataIntegrityViolationExceptionHandler(e);
             return null;
-        } catch (IllegalStateException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No incluir el costo total en la petición");
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 

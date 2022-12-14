@@ -32,6 +32,5 @@ public class SessionInfoJdbcRepository {
             cs.execute();
             return cs.getObject(1);
         });
-
     }
 }
