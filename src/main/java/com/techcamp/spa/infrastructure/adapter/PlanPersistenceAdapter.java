@@ -35,6 +35,11 @@ public class PlanPersistenceAdapter implements PlanPersistencePort {
     }
 
     @Override
+    public PlanDto getById(Byte id) throws NoSuchElementException {
+        return planMapper.toDomain(planJpaRepository.findById(id).orElseThrow());
+    }
+
+    @Override
     public PlanDto update(PlanDto planDto) throws NoSuchElementException {
         if (planDto.getPlanId() == null) {
             throw new DataIntegrityViolationException("PlanId no ingresado");

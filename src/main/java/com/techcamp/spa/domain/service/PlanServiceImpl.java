@@ -24,6 +24,11 @@ public class PlanServiceImpl implements PlanServicePort {
     }
 
     @Override
+    public PlanDto getById(Byte id) {
+        return planPersistencePort.getById(id);
+    }
+
+    @Override
     public PlanDto update(PlanDto plan) {
         return planPersistencePort.update(plan);
     }

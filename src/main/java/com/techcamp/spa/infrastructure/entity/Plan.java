@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,12 +28,13 @@ public class Plan {
     @Column(name = "DISCOUNT", nullable = false)
     private Byte discount;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "AREA_PLAN",
             joinColumns = @JoinColumn(name = "PLAN_ID", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "AREA_ID", nullable = false)
     )
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Area> areas;
 
 }

@@ -96,7 +96,7 @@ public class CrudConfig {
 
     @Bean
     public AppointmentServicePort appointmentService() {
-        return new AppointmentServiceImpl(appointmentPersistence());
+        return new AppointmentServiceImpl(appointmentPersistence(), planPersistence());
     }
 
     @Bean

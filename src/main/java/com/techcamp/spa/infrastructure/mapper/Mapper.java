@@ -18,11 +18,11 @@ public abstract class Mapper<D, E> {
                 .collect(Collectors.toList()) : null;
     }
 
-//    public List<E> toEntityList(List<D> dtoList) {
-//        return (dtoList != null) ? dtoList.stream()
-//                .map(this::toEntity)
-//                .collect(Collectors.toList()) : null;
-//    }
+    public List<E> toEntityList(List<D> dtoList) {
+        return (dtoList != null) ? dtoList.stream()
+                .map(this::toEntity)
+                .collect(Collectors.toList()) : null;
+    }
 
     public Page<D> toDomainPage(Page<E> entityPage) {
         return entityPage.map(this::toDomain);

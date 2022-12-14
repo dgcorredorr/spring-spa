@@ -10,9 +10,12 @@ public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
 
     private final PlanMapper planMapper;
 
+    private final ClientMapper clientMapper;
+
     @Autowired
-    public AppointmentMapper(PlanMapper planMapper) {
+    public AppointmentMapper(PlanMapper planMapper, ClientMapper clientMapper) {
         this.planMapper = planMapper;
+        this.clientMapper = clientMapper;
     }
 
     @Override
@@ -22,6 +25,7 @@ public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
                 .planId(appointment.getPlanId())
                 .totalFee(appointment.getTotalFee())
                 .plan(planMapper.toDomain(appointment.getPlan()))
+                .clientList(clientMapper.toDomainList(appointment.getClientList()))
                 .build() : null;
     }
 
@@ -31,6 +35,7 @@ public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
                 .appointmentId(appointment.getAppointmentId())
                 .planId(appointment.getPlanId())
                 .totalFee(appointment.getTotalFee())
+                .clientList(clientMapper.toEntityList(appointment.getClientList()))
                 .build() : null;
     }
 }
