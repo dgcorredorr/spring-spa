@@ -4,6 +4,7 @@ import com.techcamp.spa.domain.data.AppointmentDto;
 import com.techcamp.spa.domain.ports.api.AppointmentServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,11 @@ public class AppointmentController {
     }
 
     @GetMapping
-    public ResponseEntity<?> read(@RequestParam(required = false) Long appointmentId) {
+    public ResponseEntity<?> read(@RequestParam(required = false) Long appointmentId,
+                                  Pageable pageable) {
         try {
             if (appointmentId==null) {
-                return new ResponseEntity<>(appointmentServicePort.getAll(), HttpStatus.OK);
+                return new ResponseEntity<>(appointmentServicePort.getAll(pageable), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(appointmentServicePort.getById(appointmentId), HttpStatus.OK);
             }

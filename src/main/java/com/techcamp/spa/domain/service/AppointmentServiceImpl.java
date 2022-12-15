@@ -4,6 +4,8 @@ import com.techcamp.spa.domain.data.AppointmentDto;
 import com.techcamp.spa.domain.ports.api.AppointmentServicePort;
 import com.techcamp.spa.domain.ports.spi.AppointmentPersistencePort;
 import com.techcamp.spa.domain.ports.spi.PlanPersistencePort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +51,8 @@ public class AppointmentServiceImpl implements AppointmentServicePort {
     }
 
     @Override
-    public List<AppointmentDto> getAll() {
-        return appointmentPersistencePort.getAll();
+    public Page<AppointmentDto> getAll(Pageable pageable) {
+        return appointmentPersistencePort.getAll(pageable);
     }
 
     @Override

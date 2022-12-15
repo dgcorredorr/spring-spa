@@ -6,9 +6,10 @@ import com.techcamp.spa.infrastructure.mapper.AppointmentMapper;
 import com.techcamp.spa.infrastructure.repository.AppointmentJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -26,12 +27,12 @@ public class AppointmentPersistenceAdapter implements AppointmentPersistencePort
     }
 
     @Override
-    public List<AppointmentDto> getAll() throws NoSuchElementException {
-    List<AppointmentDto> appointmentList = appointmentMapper.toDomainList(appointmentJpaRepository.findAll());
-        if (appointmentList.isEmpty()) {
+    public Page<AppointmentDto> getAll(Pageable pageable) throws NoSuchElementException {
+    Page<AppointmentDto> appointmentPage = appointmentMapper.toDomainPage(appointmentJpaRepository.findAll(pageable));
+        if (appointmentPage.isEmpty()) {
             throw new NoSuchElementException("No se encontraron agendamientos en la base de datos");
         }
-        return appointmentList;
+        return appointmentPage;
     }
 
     @Override

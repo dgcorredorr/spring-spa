@@ -1,14 +1,14 @@
 package com.techcamp.spa.domain.ports.spi;
 
 import com.techcamp.spa.domain.data.AppointmentDto;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface AppointmentPersistencePort {
 
     AppointmentDto save(AppointmentDto appointment);
 
-    List<AppointmentDto> getAll();
+    Page<AppointmentDto> getAll(Pageable pageable);
 
     AppointmentDto getById(Long appointmentId);
 
