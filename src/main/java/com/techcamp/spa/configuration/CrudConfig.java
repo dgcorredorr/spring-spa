@@ -108,4 +108,14 @@ public class CrudConfig {
     public SessionInfoServicePort sessionInfoService() {
         return new SessionInfoServiceImpl(sessionInfoPersistence());
     }
+
+    @Bean
+    public InvoicePersistencePort invoicePersistence() {
+        return new InvoicePersistenceAdapter();
+    }
+
+    @Bean
+    public InvoiceServicePort invoiceService() {
+        return new InvoiceServiceImpl(invoicePersistence());
+    }
 }
