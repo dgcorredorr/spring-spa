@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="customer_invoice" pageWidth="792" pageHeight="550" orientation="Landscape" columnWidth="732" leftMargin="30" rightMargin="30" topMargin="40" bottomMargin="25" uuid="3eae3f10-c1c9-45f5-9247-6f4a348243a4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="GEST_SPA"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="222"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="772"/>
+	<parameter name="clientId" class="java.lang.String"/>
+	<parameter name="invoiceMonth" class="java.lang.String"/>
+	<parameter name="invoiceYear" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT C.FIRST_NAME AS CLIENT_FIRST_NAME, 
+	C.MIDDLE_NAME AS CLIENT_MIDDLE_NAME, 
+	C. LAST_NAME AS CLIENT_LAST_NAME, DT.ABBREVIATION, 
+	C.DOCUMENT_NUMBER, 
+    M.DESCRIPTION, M.MONTHLY_FEE,
+    S.FIRST_NAME AS SPECIALIST_FIRST_NAME, 
+    S.MIDDLE_NAME AS SPECIALIST_MIDDLE_NAME, 
+	S.LAST_NAME AS SPECIALIST_LAST_NAME, 
+	A.DESCRIPTION AS SPECIALIST_AREA, 
+	P.DESCRIPTION AS PLAN_NAME,
+    SI.SESSION_INFO_ID, SI.SESSION_DATE, A.APPOINTMENT_ID,
+    (A.SESSION_FEE*(1-M.DISCOUNT/100)*(1-P.DISCOUNT/100)) AS TOTAL_SESSION_FEE
+FROM CLIENT C
+INNER JOIN MEMBERSHIP M
+ON C.MEMBERSHIP_ID=M.MEMBERSHIP_ID AND C.CLIENT_ID= $P{clientId}
+INNER JOIN DOCUMENT_TYPE DT
+ON C.DOCUMENT_TYPE_ID=DT.DOCUMENT_TYPE_ID
+INNER JOIN SESSION_INFO SI
+ON SI.CLIENT_ID=C.CLIENT_ID AND TO_CHAR(SI.SESSION_DATE, 'MM') = $P{invoiceMonth}  AND TO_CHAR(SI.SESSION_DATE, 'YYYY') = $P{invoiceYear}
+INNER JOIN SPECIALIST S
+ON SI.SPECIALIST_ID=S.SPECIALIST_ID
+INNER JOIN AREA A
+ON S.AREA_ID=A.AREA_ID
+INNER JOIN APPOINTMENT A
+ON SI.APPOINTMENT_ID=A.APPOINTMENT_ID
+INNER JOIN PLAN P
+ON A.PLAN_ID=P.PLAN_ID
+ORDER BY SI.SESSION_DATE]]>
+	</queryString>
+	<field name="CLIENT_FIRST_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CLIENT_FIRST_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLIENT_FIRST_NAME"/>
+	</field>
+	<field name="CLIENT_MIDDLE_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CLIENT_MIDDLE_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLIENT_MIDDLE_NAME"/>
+	</field>
+	<field name="CLIENT_LAST_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CLIENT_LAST_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLIENT_LAST_NAME"/>
+	</field>
+	<field name="ABBREVIATION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ABBREVIATION"/>
+		<property name="com.jaspersoft.studio.field.label" value="ABBREVIATION"/>
+	</field>
+	<field name="DOCUMENT_NUMBER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOCUMENT_NUMBER"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOCUMENT_NUMBER"/>
+	</field>
+	<field name="DESCRIPTION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DESCRIPTION"/>
+		<property name="com.jaspersoft.studio.field.label" value="DESCRIPTION"/>
+	</field>
+	<field name="MONTHLY_FEE" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="MONTHLY_FEE"/>
+		<property name="com.jaspersoft.studio.field.label" value="MONTHLY_FEE"/>
+	</field>
+	<field name="SPECIALIST_FIRST_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SPECIALIST_FIRST_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SPECIALIST_FIRST_NAME"/>
+	</field>
+	<field name="SPECIALIST_MIDDLE_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SPECIALIST_MIDDLE_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SPECIALIST_MIDDLE_NAME"/>
+	</field>
+	<field name="SPECIALIST_LAST_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SPECIALIST_LAST_NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SPECIALIST_LAST_NAME"/>
+	</field>
+	<field name="SPECIALIST_AREA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SPECIALIST_AREA"/>
+		<property name="com.jaspersoft.studio.field.label" value="SPECIALIST_AREA"/>
+	</field>
+	<field name="SESSION_INFO_ID" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="SESSION_INFO_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SESSION_INFO_ID"/>
+	</field>
+	<field name="SESSION_DATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="SESSION_DATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="SESSION_DATE"/>
+	</field>
+	<field name="TOTAL_SESSION_FEE" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="TOTAL_SESSION_FEE"/>
+		<property name="com.jaspersoft.studio.field.label" value="TOTAL_SESSION_FEE"/>
+	</field>
+	<field name="PLAN_NAME" class="java.lang.String"/>
+	<field name="APPOINTMENT_ID" class="java.lang.Long"/>
+	<variable name="TOTAL_TO_PAY" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTAL_SESSION_FEE}]]></variableExpression>
+	</variable>
+	<group name="Client Session List">
+		<groupExpression><![CDATA[$F{DOCUMENT_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="120">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="120" height="22" uuid="88c0d2a0-f27c-4a31-97f4-8e719934b854"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cliente:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="22" width="120" height="22" uuid="2e7ebd93-ce87-45cb-9a49-d0b8b85e1029"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de documento:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="44" width="120" height="22" uuid="b0161f78-c5a1-4e24-af82-4f27ba223c2c">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Número de documento:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="364" y="0" width="110" height="22" uuid="cbbd9a46-3c57-4c80-af58-f0740369c501"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha de generación:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="364" y="22" width="110" height="22" uuid="76e5dc52-42d5-4d06-9ded-0c733b4beafd"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Periodo contable:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="120" y="0" width="239" height="22" uuid="3db87fd7-5e0f-4435-baf7-dbd37379f827"/>
+					<textFieldExpression><![CDATA[($F{CLIENT_MIDDLE_NAME}!=null) ? $F{CLIENT_FIRST_NAME}+" "+$F{CLIENT_MIDDLE_NAME}+" "+$F{CLIENT_LAST_NAME} :  $F{CLIENT_FIRST_NAME}+" "+$F{CLIENT_LAST_NAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="120" y="22" width="239" height="22" uuid="da494525-ff2d-4afa-8075-332b4a12c26a"/>
+					<textFieldExpression><![CDATA[$F{ABBREVIATION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="120" y="44" width="239" height="22" uuid="40e9f1c6-808f-4cb8-8ece-1701f0404bd8"/>
+					<textFieldExpression><![CDATA[$F{DOCUMENT_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="474" y="22" width="260" height="22" uuid="33a355ab-7d7b-4a58-a677-7b7c09ded39c"/>
+					<textFieldExpression><![CDATA[java.time.LocalDate.parse($P{invoiceYear}+"-"+$P{invoiceMonth}+"-01").withDayOfMonth(1) +" a "+ java.time.LocalDate.parse($P{invoiceYear}+"-"+$P{invoiceMonth}+"-01").withDayOfMonth(java.time.LocalDate.parse($P{invoiceYear}+"-"+$P{invoiceMonth}+"-01").getMonth().length(java.time.LocalDate.parse($P{invoiceYear}+"-"+$P{invoiceMonth}+"-01").isLeapYear()))]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="474" y="0" width="260" height="22" uuid="59098132-e554-4e18-9ffa-4da2a43ee4c3"/>
+					<textFieldExpression><![CDATA[java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(java.time.LocalDateTime.now())]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="0" y="66" width="734" height="22" backcolor="#E8E8E8" uuid="53884e5b-8f85-4869-9962-aba988cb099c">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="0.0" lineColor="rgba(0, 0, 0, 0.0)"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="5" y="69" width="100" height="20" uuid="d6dcaa24-6f00-436a-9933-3b9c56cd3fad">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Detalle]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="5" y="96" width="55" height="19" uuid="6d123a12-167c-4366-802d-f80c760569d5"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ID Sesión]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="170" y="96" width="100" height="19" uuid="cbeb91b0-955f-4109-b2cf-750c988adb02"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="96" width="84" height="19" uuid="4647edac-3752-44cb-9b30-32fd6ad83e9b"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Área]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="96" width="160" height="19" uuid="112afdef-3769-450a-a7a2-a52d7bb0f0c7"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Especialista]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="640" y="96" width="94" height="19" uuid="2ffe189e-933e-41a0-870e-08743c263033"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="364" y="44" width="110" height="22" uuid="c4ee11a1-2092-46db-9c6d-c70fde411ef1">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Membresía: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="474" y="44" width="260" height="22" uuid="bba1389c-2553-46db-990d-c6cbf6ed45b8"/>
+					<textFieldExpression><![CDATA[$F{DESCRIPTION}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="540" y="96" width="90" height="19" uuid="6dd1c274-0c8d-4ce0-b4ec-48c563f49f62"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Plan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="70" y="96" width="90" height="19" uuid="5814a6aa-d06e-49ea-b272-190e9a8723c7"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ID Agendamiento]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="93">
+				<rectangle>
+					<reportElement x="0" y="0" width="734" height="22" backcolor="#E8E8E8" uuid="b07b9d44-ab6f-4189-beb7-80664eced3d4">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="0.0" lineColor="rgba(0, 0, 0, 0.0)"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="4" y="3" width="100" height="20" uuid="dfd41d90-83e0-464a-a48a-dbe083e3e2b0">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Resumen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="540" y="62" width="80" height="22" uuid="0b0dd668-8c76-480b-9335-67e5c68b11fa"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total a pagar: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="640" y="62" width="94" height="22" uuid="9c69e984-2922-40a5-874e-1d087a8b6445"/>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA["$ "+($V{TOTAL_TO_PAY}+$F{MONTHLY_FEE})]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="5" y="40" width="87" height="22" uuid="a0b05e17-7610-4aeb-80cb-7a83d23d896e"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total sesiones: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="92" y="40" width="139" height="22" uuid="8eda45ff-8f11-42b2-b7e1-a6de1f8b277f"/>
+					<textFieldExpression><![CDATA["$ "+$V{TOTAL_TO_PAY}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="92" y="62" width="139" height="22" uuid="71a9a6e4-95e3-4a5d-8359-5d823a9e60c9"/>
+					<textFieldExpression><![CDATA["$ "+$F{MONTHLY_FEE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="5" y="62" width="87" height="22" uuid="c44db5c9-62ad-461b-bae1-c47cff7b3c27">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Membresía: ]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="554" y="0" width="180" height="40" uuid="e1b8a534-5997-4853-88e7-09b3c110d30e">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA["https://iili.io/Hx0imhJ.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="5" width="150" height="30" uuid="72fde00b-9b57-479e-8b48-6372f1c4975a"/>
+				<textElement>
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado de cuenta]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="5" y="0" width="55" height="20" uuid="94658027-e1de-44ac-b7a7-1306c0ed9327">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{SESSION_INFO_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="0" width="100" height="20" uuid="7dab8bd4-3909-429c-afec-1ecc9ea8dc6d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format($F{SESSION_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="84" height="20" uuid="1cc98db2-f7d6-469a-a154-144eb8c8797d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{SPECIALIST_AREA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="160" height="20" uuid="69a9057c-47c2-4272-b193-b380ee729238">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[($F{SPECIALIST_MIDDLE_NAME}!=null) ? $F{SPECIALIST_FIRST_NAME}+" "+$F{SPECIALIST_MIDDLE_NAME}+" "+$F{SPECIALIST_LAST_NAME} :  $F{SPECIALIST_FIRST_NAME}+" "+$F{SPECIALIST_LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="0" width="94" height="20" uuid="9b9f808d-31c6-4354-8644-8cebbecc2d8c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["$ "+$F{TOTAL_SESSION_FEE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="540" y="0" width="90" height="20" uuid="6b2d15c0-2bd7-41fa-a0df-74fa50b9d29c"/>
+				<textFieldExpression><![CDATA[$F{PLAN_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="90" height="20" uuid="8d240512-3477-4cc0-b0d1-99f02ce25e59">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{APPOINTMENT_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="33">
+			<textField>
+				<reportElement x="664" y="21" width="70" height="12" uuid="b4c31470-6172-4a49-ac81-75a30a08b8c4"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
