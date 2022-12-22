@@ -9,10 +9,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/report")
+@CrossOrigin(origins = "http://localhost:4200")
 public class InvoiceController {
 
     private final InvoiceServicePort invoiceServicePort;
@@ -35,7 +33,7 @@ public class InvoiceController {
         InvoiceDto dto = invoiceServicePort.getInvoice(params);
 
         InputStreamResource streamResource = new InputStreamResource(dto.getStream());
-        MediaType mediaType = null;
+        MediaType mediaType;
         if (params.get("reportType").toString().equalsIgnoreCase(ReportType.EXCEL.name())) {
             mediaType = MediaType.APPLICATION_OCTET_STREAM;
         } else {

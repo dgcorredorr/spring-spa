@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/client")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClientController {
 
     private final ClientServicePort clientServicePort;
@@ -29,7 +30,7 @@ public class ClientController {
     public ResponseEntity<?> read(@RequestParam(required = false) Long clientId,
                                   @RequestParam(required = false) String clientName,
                                   @RequestParam(required = false) String documentNumber,
-                                  @PageableDefault(size = 20) Pageable pageable) {
+                                  @PageableDefault Pageable pageable) {
         try {
             if (clientId != null ^ (clientName != null || documentNumber != null)) {
                 if (clientId != null) {
