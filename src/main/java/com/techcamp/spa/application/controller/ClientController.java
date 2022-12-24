@@ -88,6 +88,16 @@ public class ClientController {
         }
     }
 
+    @DeleteMapping("/inactive")
+    public ResponseEntity<?> deleteInactiveClients() {
+        try {
+            clientServicePort.deleteInactiveClients();
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
     @DeleteMapping
     public ResponseEntity<?> delete(@RequestBody ClientDto client) {
         try {

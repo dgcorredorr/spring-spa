@@ -15,6 +15,6 @@ public interface ClientJpaRepository extends JpaRepository<Client, Long> {
             "WHERE (lower(c.firstName) LIKE lower(concat('%',concat(?1,'%'))) OR " +
             "lower(c.lastName) LIKE lower(concat('%',concat(?1,'%'))) OR " +
             "lower(c.middleName) LIKE lower(concat('%',concat(?1,'%')))) " +
-            "AND lower(c.documentNumber) LIKE lower(concat('%',concat(?2,'%')))")
+            "OR lower(c.documentNumber) LIKE lower(concat('%',concat(?2,'%')))")
     Page<Client> getByDocumentNumberContainingIgnoreCaseOrNameContainingIgnoreCase(String name, String documentNumber, Pageable pageable);
 }

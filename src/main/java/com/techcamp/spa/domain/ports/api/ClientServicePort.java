@@ -20,4 +20,6 @@ public interface ClientServicePort {
 
     void delete(ClientDto client);
 
+    void deleteInactiveClients();
+
 }

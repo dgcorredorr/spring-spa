@@ -20,4 +20,6 @@ public interface ClientPersistencePort {
 
     void delete(ClientDto client);
 
+    void deleteInactiveClients();
+
 }

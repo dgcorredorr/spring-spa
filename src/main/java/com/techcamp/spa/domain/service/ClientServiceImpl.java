@@ -48,4 +48,11 @@ public class ClientServiceImpl implements ClientServicePort {
     public void delete(ClientDto client) {
         clientPersistencePort.delete(client);
     }
+
+    @Override
+    public void deleteInactiveClients() {
+        clientPersistencePort.deleteInactiveClients();
+    }
+
+
 }

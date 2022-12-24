@@ -3,6 +3,7 @@ package com.techcamp.spa.infrastructure.adapter;
 import com.techcamp.spa.domain.data.ClientDto;
 import com.techcamp.spa.domain.ports.spi.ClientPersistencePort;
 import com.techcamp.spa.infrastructure.mapper.ClientMapper;
+import com.techcamp.spa.infrastructure.repository.ClientJdbcRepository;
 import com.techcamp.spa.infrastructure.repository.ClientJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,6 +19,9 @@ public class ClientPersistenceAdapter implements ClientPersistencePort {
 
     @Autowired
     private ClientJpaRepository clientJpaRepository;
+
+    @Autowired
+    private ClientJdbcRepository clientJdbcRepository;
     @Autowired
     private ClientMapper clientMapper;
 
@@ -78,5 +82,10 @@ public class ClientPersistenceAdapter implements ClientPersistencePort {
         } else {
             throw new NoSuchElementException();
         }
+    }
+
+    @Override
+    public void deleteInactiveClients() {
+        clientJdbcRepository.deleteInactiveClients();
     }
 }
