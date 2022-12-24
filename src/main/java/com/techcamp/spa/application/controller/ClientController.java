@@ -16,9 +16,8 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/client")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class ClientController {
-
     private final ClientServicePort clientServicePort;
 
     @Autowired

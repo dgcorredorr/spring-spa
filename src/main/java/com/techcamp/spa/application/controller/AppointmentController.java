@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/appointment")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class AppointmentController {
 
     private final AppointmentServicePort appointmentServicePort;

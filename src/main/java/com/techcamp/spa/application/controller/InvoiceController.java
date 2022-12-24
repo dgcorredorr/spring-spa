@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/report")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class InvoiceController {
 
     private final InvoiceServicePort invoiceServicePort;

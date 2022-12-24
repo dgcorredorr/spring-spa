@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/specialist")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class SpecialistController {
 
     private final SpecialistServicePort specialistServicePort;

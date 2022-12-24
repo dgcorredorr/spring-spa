@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/gender")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class GenderController {
 
     private final GenderServicePort genderServicePort;

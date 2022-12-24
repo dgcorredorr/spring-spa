@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/work_hours")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class WorkHoursController {
 
     private final WorkHoursServicePort workHoursServicePort;

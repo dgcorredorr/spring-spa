@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/document_type")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class DocumentTypeController {
 
     private final DocumentTypeServicePort documentTypeServicePort;

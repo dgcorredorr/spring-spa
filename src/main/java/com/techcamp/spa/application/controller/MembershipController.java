@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/membership")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class MembershipController {
 
     private final MembershipServicePort membershipServicePort;

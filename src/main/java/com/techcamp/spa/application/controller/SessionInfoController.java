@@ -20,7 +20,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/session_info")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${controller.cross-origins-path}")
 public class SessionInfoController {
 
     private final SessionInfoServicePort sessionInfoServicePort;
