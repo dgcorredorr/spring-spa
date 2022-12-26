@@ -11,6 +11,10 @@ public interface SessionInfoPersistencePort {
 
     SessionInfoDto getById(Long id);
 
+    Page<SessionInfoDto> getBySpecialistId(Short id, Pageable pageable);
+
+    Page<SessionInfoDto> getByClientId(Long id, Pageable pageable);
+
     Page<SessionInfoDto> getAll(Pageable pageable);
 
     Integer isAvailable(Long clientId, Short specialistId, Long appointmentId, LocalDateTime sessionDate);

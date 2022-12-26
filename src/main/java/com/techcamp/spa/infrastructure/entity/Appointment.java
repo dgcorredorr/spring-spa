@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,8 @@ public class Appointment {
     private Long appointmentId;
     @Column(name = "PLAN_ID", nullable = false)
     private Byte planId;
+    @Column(name = "APPOINTMENT_DATE", nullable = false)
+    private LocalDate appointmentDate;
     @Column(name = "TOTAL_FEE")
     private Integer totalFee;
 

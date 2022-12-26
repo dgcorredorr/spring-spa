@@ -23,6 +23,7 @@ public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
         return (appointment != null) ? AppointmentDto.builder()
                 .appointmentId(appointment.getAppointmentId())
                 .planId(appointment.getPlanId())
+                .appointmentDate(appointment.getAppointmentDate())
                 .totalFee(appointment.getTotalFee())
                 .plan(planMapper.toDomain(appointment.getPlan()))
                 .clientList(clientMapper.toDomainList(appointment.getClientList()))
@@ -34,6 +35,7 @@ public class AppointmentMapper extends Mapper<AppointmentDto, Appointment> {
         return (appointment != null) ? Appointment.builder()
                 .appointmentId(appointment.getAppointmentId())
                 .planId(appointment.getPlanId())
+                .appointmentDate(appointment.getAppointmentDate())
                 .totalFee(appointment.getTotalFee())
                 .clientList(clientMapper.toEntityList(appointment.getClientList()))
                 .build() : null;

@@ -40,6 +40,24 @@ public class SessionInfoPersistenceAdapter implements SessionInfoPersistencePort
         return sessionInfoMapper.toDomain(sessionInfoJpaRepository.findById(id).orElseThrow());
     }
 
+
+    @Override
+    public Page<SessionInfoDto> getBySpecialistId(Short id, Pageable pageable) {
+        Page<SessionInfoDto> sessionInfoPage = sessionInfoMapper.toDomainPage(sessionInfoJpaRepository.findBySpecialistId(id, pageable));
+        if (sessionInfoPage.isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return sessionInfoPage;
+    }
+
+    @Override
+    public Page<SessionInfoDto> getByClientId(Long id, Pageable pageable) {
+        Page<SessionInfoDto> sessionInfoPage = sessionInfoMapper.toDomainPage(sessionInfoJpaRepository.findByClientId(id, pageable));
+        if (sessionInfoPage.isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return sessionInfoPage;
+    }
     @Override
     public Page<SessionInfoDto> getAll(Pageable pageable) {
         Page<SessionInfoDto> sessionInfoPage = sessionInfoMapper.toDomainPage(sessionInfoJpaRepository.findAll(pageable));

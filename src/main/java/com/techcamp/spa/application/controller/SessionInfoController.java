@@ -59,6 +59,24 @@ public class SessionInfoController {
         }
     }
 
+    @GetMapping("/specialist/{specialistId}")
+    public ResponseEntity<Page<SessionInfoDto>> readBySpecialist(@PathVariable("specialistId") Short specialistId, Pageable pageable) {
+        try {
+            return new ResponseEntity<>(sessionInfoServicePort.getBySpecialistId(specialistId, pageable), HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron sesiones en la base de datos");
+        }
+    }
+
+    @GetMapping("/client/{clientId}")
+    public ResponseEntity<Page<SessionInfoDto>> readByClient(@PathVariable("clientId") Long clientId, Pageable pageable) {
+        try {
+            return new ResponseEntity<>(sessionInfoServicePort.getByClientId(clientId, pageable), HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron sesiones en la base de datos");
+        }
+    }
+
     @PostMapping
     public ResponseEntity<SessionInfoDto> create(@RequestBody SessionInfoDto sessionInfoDto) {
         try {
