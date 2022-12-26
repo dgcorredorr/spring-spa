@@ -1,4 +1,4 @@
-package com.techcamp.spa.configuration;
+package com.techcamp.spa.application.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,4 +1,4 @@
-package com.techcamp.spa.configuration;
+package com.techcamp.spa.application.configuration;
 
 import com.techcamp.spa.domain.ports.api.InvoiceServicePort;
 import com.techcamp.spa.domain.ports.spi.InvoicePersistencePort;
